@@ -1,0 +1,110 @@
+{% extends 'system/layouts/main.html' %}
+
+{% block title %}
+Search Results
+{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Search Results</h2>
+    <style>
+        .card {
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 8px; /* Add border radius */
+    margin-bottom: 20px; /* Add margin between cards */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+}
+
+.card-title {
+    font-size: 18px; /* Adjust title font size */
+    margin-bottom: 10px; /* Add margin below title */
+}
+
+.card-text {
+    font-size: 14px; /* Adjust text font size */
+    color: #666; /* Adjust text color */
+}
+
+.card-group {
+    display: flex; /* Display cards in a row */
+    flex-wrap: wrap; /* Wrap cards to next row if necessary */
+}
+
+.container {
+    max-width: 800px; /* Limit container width */
+    margin: 0 auto; /* Center container horizontally */
+}
+ /* CSS styles for default link button */
+ .default-link-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-left: 50%;
+            margin-top: 3%;
+        }
+
+        .default-link-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    
+    <h3>Buses:</h3>
+    {% if buses %}
+        <div class="card-group">
+            {% for bus in buses %}
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ bus.name }}</h5>
+                        <p class="card-text">From: {{ bus.from_location.name }}</p>
+                        <p class="card-text">To: {{ bus.to_location.name }}</p>
+                        <p class="card-text">Travel Date: {{ bus.travel_date }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No buses found for the selected criteria.</p>
+    {% endif %}
+    
+    <h3>Hotels:</h3>
+    {% if hotels %}
+        <div class="card-group">
+            {% for hotel in hotels %}
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ hotel.name }}</h5>
+                        <p class="card-text">Located near: {{ hotel.location.name }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No hotels found.</p>
+    {% endif %}
+    
+    <h3>Deposit Centers:</h3>
+    {% if deposit_centers %}
+        <div class="card-group">
+            {% for center in deposit_centers %}
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ center.name }}</h5>
+                        <p class="card-text">Located near: {{ center.location.name }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No deposit centers found.</p>
+    {% endif %}
+</div>
+<!-- Default link button -->
+<a href="https://www.abhibus.com/?utm_source=google&utm_medium=cpc&utm_campaign=Abhibus_Brand&utm_term=abhi%20bus&utm_content=Brand&gad_source=1&gclid=CjwKCAjwkuqvBhAQEiwA65XxQNvbSn-_sotkiKq2QQEKk4Oo-bEi0IVYpe7aZWQEdxBoAf1KvATbRRoCPhoQAvD_BwE" class="default-link-button">Book Now</a>
+</div>
+
+
+{% endblock content %}

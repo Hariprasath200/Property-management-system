@@ -1,0 +1,97 @@
+{% extends 'system/layouts/main.html' %}
+
+{% block title %}
+Home
+
+{% endblock title %}
+
+{% block content %}
+<style>
+    body{
+      background-image: url('static/images/bg.png');
+      background-size: 78%;
+    }
+  </style>
+
+<title>Bus Reservation</title>
+<!-- Include Bootstrap CSS -->
+
+<style>
+    /* Custom CSS for adjusting card appearance */
+    /* Custom CSS for adjusting card appearance */
+.custom-card {
+    border: none; /* Remove border */
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add shadow */
+}
+
+.custom-card .card-body {
+    padding: 30px; /* Add padding */
+}
+
+.custom-card .card-title {
+    font-size: 24px;
+    color: #333;
+}
+
+.custom-card label {
+    font-weight: bold;
+    color: #555;
+}
+
+.custom-card input[type="text"],
+.custom-card select {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.custom-card button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.custom-card button:hover {
+    background-color: #0056b3;
+}
+
+</style>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center mb-4">Bus Reservation</h5>
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="id_from_location">From Location:</label>
+                                {{ form.from_location }}
+                            </div>
+                            <div class="form-group">
+                                <label for="id_to_location">To Location:</label>
+                                {{ form.to_location }}
+                            </div>
+                            <div class="form-group">
+                                <label for="id_travel_date">Travel Date:</label>
+                                {{ form.travel_date }}
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    {% endblock content %}

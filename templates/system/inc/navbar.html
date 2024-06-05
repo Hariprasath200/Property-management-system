@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>PROPERTY</title>
+  <style>
+    /* UTILITIES */
+    
+
+    body {
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    /* RESPONSIVE NAVBAR MENU STARTS */
+
+    /* CHECKBOX HACK */
+
+    input[type=checkbox] {
+      display: none;
+    }
+
+    /* HAMBURGER MENU */
+    .hamburger {
+      display: none;
+      font-size: 24px;
+      user-select: none;
+    }
+
+    /* APPLYING MEDIA QUERIES */
+    @media only screen and (max-width: 100px) {
+      .menu {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      
+      .nav-links li {
+        padding: 10px 0;
+      }
+
+      input[type=checkbox]:checked ~ .nav-links {
+        display: flex;
+      }
+    }
+
+    /* NAVBAR STYLING STARTS */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      background-color: rgb(11, 194, 240);
+      color: #fff;
+    }
+
+    .nav-links a {
+      color: #fff;
+    }
+
+    /* LOGO */
+    .logo {
+      font-size: 30px;
+    }
+    
+
+    /* NAVBAR MENU */
+    .menu {
+      display: flex;
+      gap: 1em;
+      font-size: 18px;
+    }
+
+    .menu li:hover {
+      background-color: rgb(14, 245, 33);
+      border-radius: 5px;
+      transition: 0.3s ease;
+    }
+
+    .menu li {
+      padding: 5px 14px;
+    }
+
+  
+
+    /* Active class */
+    .li-active {
+      background-color: #f71008;
+      border-radius: 10px;
+      transition: 0.3s ease;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <!-- LOGO -->
+    <div class="logo" style="margin-left: 13%;">PROPERTY MANAGEMENT SYSTEM</div>
+
+    <!-- NAVIGATION MENU -->
+    <ul class="nav-links">
+
+      <!-- USING CHECKBOX HACK -->
+      <input type="checkbox" id="checkbox_toggle" />
+      <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+
+      <!-- NAVIGATION MENUS -->
+      <div class="menu">
+
+        <li><a href="{%url 'home' %}" {% if request.path == '/' %}class="active"{% endif %}>HOME</a></li>
+        <li><a href="{%url 'deposit' %}" {% if request.path == '/deposit/' %}class="active"{% endif %}>DEPOSIT</a></li>
+        <li><a href="{%url 'bus' %}" {% if request.path == '/bus/' %}class="active"{% endif %}>BUS</a></li>
+        <li><a href="{%url 'agent' %}" {% if request.path == '/agent/' %}class="active"{% endif %}>HOTELS</a></li>
+
+      </div>
+    </ul>
+  </nav>
+</body>
+
+</html>

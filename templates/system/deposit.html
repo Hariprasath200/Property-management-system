@@ -1,0 +1,300 @@
+{% extends 'system/layouts/main.html' %}
+
+{% block title %}
+Deposit
+{% endblock title %}
+
+{% block content %}
+                <style>
+                    
+                    body {
+                        background-image: url('static/images/bg.png');
+                        background-size: 78%;
+                    }
+
+                    .topics-container {
+                        display: flex;
+                        justify-content: flex-start; /* Align items to the left */
+                        margin-left: 25%;
+                        margin-top: 3%;        
+                    }
+
+                    .topic {
+                        margin-right: 10px; /* Add margin between topic divs */
+                        cursor: pointer;
+                        background-color: #f0f0f0; /* Background color */
+                        padding: 10px; /* Padding around the content */
+                        border-radius: 5px; /* Rounded corners */
+                        max-width: 200px; /* Adjust the maximum width as needed */
+                        width: 50%; /* Ensures the elements take full width of their container */
+                    }
+
+                    .details {
+                        display: none;
+                        margin-top: 10px;
+                    }
+                    .topic:hover {
+                        background-color: #0fedf5; /* Darker background color on hover */
+                    }
+
+
+                    .active-topic {
+                        background-color: #e102e9; /* Background color for active topic */
+                    }
+                    form {
+                    background-color: #fff;
+                    padding: 20px;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    max-width: 400px;
+                    width: 100%;
+                    margin-left: 34.6%;
+                    opacity: 80%;
+                }
+
+                /* Form title */
+                h1 {
+                    text-align: center;
+                    margin-bottom: 20px;
+                    color: #333;
+                }
+
+                /* Label styles */
+                label {
+                    font-size: 16px;
+                    color: #555;
+                    margin-bottom: 8px;
+                    display: block;
+                }
+
+                /* Input and textarea styles */
+                input[type="text"],
+                input[type="email"],
+                textarea {
+                    width: 100%;
+                    padding: 10px;
+                    margin-bottom: 16px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    font-size: 16px;
+                }
+
+                /* Button styles */
+                button[type="submit"] {
+                    background-color: #007bff;
+                    color: #fff;
+                    padding: 12px 20px;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 16px;
+                    width: 100%;
+                }
+
+                /* Button hover effect */
+                button[type="submit"]:hover {
+                    background-color: #0056b3;
+                }   
+                </style>
+
+                <div class="topics-container">
+                    <div class="topic" id="reservation">
+                        <h3 style="margin-left: 10%;">Reservation</h3>
+                    </div>
+
+                    <div class="topic" id="direct">
+                        <h3 style="margin-left: 25%;">Collect</h3>
+                    </div>
+
+                    <div class="topic" id="collect">
+                        <h3 style="margin-left: 27%;">Direct</h3>
+                    </div>
+                </div>
+
+                <div class="details" id="reservationDetails">
+                    <!-- Reservation details content goes here -->
+                    <h1 style="color:rgb(241, 15, 15);font-weight:bold;">Reservation Form</h1>
+                    <form method="post">
+                        {% csrf_token %}
+                        <label for="id_name">Name:</label><br>
+                        <input type="text" id="id_name" name="name"><br><br>
+                        
+                        <label for="id_mobile">Mobile:</label><br>
+                        <input type="text" id="id_mobile" name="mobile"><br><br>
+                        
+                        <label for="id_email">Email:</label><br>
+                        <input type="email" id="id_email" name="email"><br><br>
+                        
+                        <label for="id_property">Property:</label><br>
+                        <input type="text" id="id_property" name="property"><br><br>
+                        
+                        <label for="id_description">Description:</label><br>
+                        <textarea id="id_description" name="description"></textarea><br><br>
+                        
+                        <label for="id_date">Date:</label><br>
+                        <input type="date" id="id_date" name="date"><br><br>  <!-- Added date input field -->
+                        
+                        
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+
+                <div class="details" id="directDetails">
+                    <h1 style="color:rgb(241, 15, 15);font-weight:bold;">Collect Property</h1>
+                    <form method="post">
+                        {% csrf_token %}
+                        <label for="id_name">Name:</label><br>
+                        <input type="text" id="id_name" name="name"><br><br>
+                        
+                        <label for="id_mobile">Mobile:</label><br>
+                        <input type="text" id="id_mobile" name="mobile"><br><br>
+                        
+                        <label for="id_email">Email:</label><br>
+                        <input type="email" id="id_email" name="email"><br><br>
+                        
+                        <label for="id_property">Property:</label><br>
+                        <input type="text" id="id_property" name="property"><br><br>
+                        
+                        <label for="id_description">Description:</label><br>
+                        <textarea id="id_description" name="description"></textarea><br><br>
+                        
+                        <label for="id_date">Date:</label><br>
+                        <input type="date" id="id_date" name="date"><br><br>
+                        
+                        <label for="id_time">Time:</label><br>
+                        <input type="time" id="id_time" name="time"><br><br>
+                        
+                        <label for="id_address">Address:</label><br>
+                        <input type="text" id="id_address" name="address"><br><br>
+                        
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+
+                <div class="details" id="collectDetails">
+                    <style>
+                
+
+/* Card Styles */
+.card {
+  width: 400px;
+  height: 370px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  margin: 20px;
+  opacity: 90%;
+}
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #4CAF50;
+  color: #ffffff;
+  background-color: #4CAF50;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Hover Effect */
+.button:hover {
+  background-color: #45a049;
+  border-color: #45a049;
+}
+
+/* Active Effect */
+.button:active {
+  background-color: #3e8e41;
+  border-color: #3e8e41;
+}
+                        </style>
+                        </head>
+                        <body>
+                        
+                        <div class="card" style="margin-left: 10%;">
+                        <h2>Trichy</h2>
+                        <p>Near Trichy Junction Trichirappalli</p>
+                        <img style="width: 70%;margin-left: 13%;" class="" src="static\images\trichy.png">
+                        <a href="https://maps.app.goo.gl/czBJVPeRtXf3wSPb6" style="margin-top: 4%;margin-left: 0%;" class="button">Location</a>
+                        </div>
+                        <div class="card" style="margin-left: 55%;margin-top: -29%;">
+                            <h2>Villupuram</h2>
+                            <p>Near Villupuram Junction Villupuram</p>
+                            <img style="width: 80%;margin-left: 13%;height: 100%;" class="" src="static\images\villupuram.jpg">
+                        <a href="https://maps.app.goo.gl/VwMgxREfF9wfcJQ29" style="margin-top: 4%;margin-left: 0%;" class="button">Location</a>
+                        
+                          </div>
+
+                          <div class="card" style="margin-top: 10%;margin-left: 10%;">
+                            <h2>Tindivanam</h2>
+                            <p>Near Tindivanam Junction Tindivanam</p>
+                            <img style="width: 70%;margin-left: 13%;height: 90%;" class="" src="static\images\tindivanam.jpg">
+                        <a href="https://maps.app.goo.gl/E7XwjDSy2vtccmde6" style="margin-top: 4%;margin-left: 0%;" class="button">Location</a>
+                          </div>
+
+                          <div class="card" style="margin-left: 55%;margin-top: -29%;">
+                            <h2>Chengallpattu</h2>
+                            <p>Near Chengallpattu Junction Chengallpattu</p>
+                            <img style="width: 70%;margin-left: 13%;height: 90%;" class="" src="static\images\chengalpattu.jpg">
+                        <a href="https://maps.app.goo.gl/oQhc7P2bMkFbakZ47" style="margin-top: 4%;margin-left: 0%;" class="button">Location</a>
+                        
+                          </div>
+
+                          <div class="card" style="margin-top: 10%;margin-left: 10%;">
+                            <h2>Tambaram</h2>
+                            <p>Near Tambaram Junction Tambaram</p>
+                            <img style="width: 70%;margin-left: 13%;height: 90%;" class="" src="static\images\tambaram.jpg">
+                        <a href="https://maps.app.goo.gl/Ldde3Qq9zh65mxmX8" style="margin-top: 4%;margin-left: 0%;" class="button">Location</a>
+                        </div>
+
+                          <div class="card" style="margin-left: 55%;margin-top: -29%;">
+                            <h2>Chennai</h2>
+                            <p>Near Chennai Junction Chennai</p>
+                            <img style="width: 70%;margin-left: 13%;height: 90%;" class="" src="static\images\chennai.jpg">
+                        <a href="https://maps.app.goo.gl/Wqo5ps9TMPuMCbVg7" style="margin-top: 4%;margin-left: 0%;" class="button">Location</a>
+                        </div>
+                        
+                </div>
+
+                <script>
+                    function setActiveTopic(topicId) {
+                        const topics = document.querySelectorAll('.topic');
+                        topics.forEach(topic => {
+                            topic.classList.remove('active-topic');
+                        });
+                        const activeTopic = document.getElementById(topicId);
+                        activeTopic.classList.add('active-topic');
+                    }
+
+                    document.getElementById("reservation").addEventListener("click", function() {
+                        document.getElementById("reservationDetails").style.display = "block";
+                        document.getElementById("directDetails").style.display = "none";
+                        document.getElementById("collectDetails").style.display = "none";
+                        setActiveTopic("reservation");
+                    });
+
+                    document.getElementById("direct").addEventListener("click", function() {
+                        document.getElementById("reservationDetails").style.display = "none";
+                        document.getElementById("directDetails").style.display = "block";
+                        document.getElementById("collectDetails").style.display = "none";
+                        setActiveTopic("direct");
+                    });
+
+                    document.getElementById("collect").addEventListener("click", function() {
+                        document.getElementById("reservationDetails").style.display = "none";
+                        document.getElementById("directDetails").style.display = "none";
+                        document.getElementById("collectDetails").style.display = "block";
+                        setActiveTopic("collect");
+                    });
+                </script>
+
+
+
+
+{% endblock content %}
